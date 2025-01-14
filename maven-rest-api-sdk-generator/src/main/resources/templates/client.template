@@ -1,0 +1,12 @@
+package  <PackageName>;
+
+import <BasePackageName>.service.<Controller>Service;
+import <BasePackageName>.service.impl.<Controller>ServiceImpl;
+<imports>
+
+public class <Controller>Client implements <Controller>Service {
+
+    private <Controller>Service service = new <Controller>ServiceImpl();
+
+<Apis>
+}

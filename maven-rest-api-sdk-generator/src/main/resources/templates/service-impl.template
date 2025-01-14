@@ -1,0 +1,9 @@
+package  <PackageName>;
+
+<imports>
+
+public class <Controller>ServiceImpl implements <Controller>Service {
+
+<Apis>
+
+}

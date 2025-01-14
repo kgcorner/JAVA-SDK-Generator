@@ -1,0 +1,4 @@
+com.scriptchess.processors.SpringBootRequestParamProcessor
+com.scriptchess.processors.SpringBootRequestBodyProcessor
+com.scriptchess.processors.SpringBootPathVariableProcessor
+com.scriptchess.processors.SpringBootRequestHeaderProcessor

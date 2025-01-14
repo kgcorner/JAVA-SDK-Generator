@@ -1,0 +1,9 @@
+package  <PackageName>;
+
+<imports>
+
+public interface <Controller>Service {
+
+<Apis definition>
+
+}

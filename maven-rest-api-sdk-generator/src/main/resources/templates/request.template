@@ -1,0 +1,113 @@
+package <PackageName>;
+
+import okhttp3.*;
+
+import java.io.IOException;
+import java.util.Map;
+
+public class Requests {
+
+     public static String doGet(String url, Map<String, String> headers) {
+         OkHttpClient client = RequestClientFactory.getHttpClient();
+         Request.Builder requestBuilder = new Request.Builder()
+                 .url(url).get();
+         if(!headers.isEmpty()) {
+             for(Map.Entry<String, String> header : headers.entrySet()) {
+                 requestBuilder.header(header.getKey(), header.getValue());
+             }
+         }
+         Request request = requestBuilder.build();
+         try(Response response = client.newCall(request).execute()) {
+             assert response.body() != null;
+             return response.body().string();
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+     }
+
+     public static String doPost(String url, Map<String, String> headers,  byte[] body, MediaType mediaType) {
+         RequestBody requestBody = RequestBody.create(body, mediaType);
+         OkHttpClient client = RequestClientFactory.getHttpClient();
+         Request.Builder requestBuilder = new Request.Builder()
+                 .url(url).post(requestBody);
+         if(!headers.isEmpty()) {
+             for(Map.Entry<String, String> header : headers.entrySet()) {
+                 requestBuilder.header(header.getKey(), header.getValue());
+             }
+         }
+         Request request = requestBuilder.build();
+         try(Response response = client.newCall(request).execute()) {
+             assert response.body() != null;
+             return response.body().string();
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+     }
+
+     public static String doPut(String url, Map<String, String> headers, byte[] body, MediaType mediaType) {
+         RequestBody requestBody = RequestBody.create(body, mediaType);
+         OkHttpClient client = RequestClientFactory.getHttpClient();
+         Request.Builder requestBuilder = new Request.Builder()
+                 .url(url).put(requestBody);
+         if(!headers.isEmpty()) {
+             for(Map.Entry<String, String> header : headers.entrySet()) {
+                 requestBuilder.header(header.getKey(), header.getValue());
+             }
+         }
+         Request request = requestBuilder.build();
+         try(Response response = client.newCall(request).execute()) {
+             assert response.body() != null;
+             return response.body().string();
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+     }
+
+     public static String doPatch(String url, Map<String, String> headers,  byte[] body, MediaType mediaType) {
+         RequestBody requestBody = RequestBody.create(body, mediaType);
+         OkHttpClient client = RequestClientFactory.getHttpClient();
+         Request.Builder requestBuilder = new Request.Builder()
+                 .url(url).patch(requestBody);
+         if(!headers.isEmpty()) {
+             for(Map.Entry<String, String> header : headers.entrySet()) {
+                 requestBuilder.header(header.getKey(), header.getValue());
+             }
+         }
+         Request request = requestBuilder.build();
+         try(Response response = client.newCall(request).execute()) {
+             assert response.body() != null;
+             return response.body().string();
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+     }
+
+     public void doDelete(String url, Map<String, String> headers,byte[] body, MediaType mediaType) {
+         RequestBody requestBody = null;
+         if(body != null) {
+             requestBody = RequestBody.create(body, mediaType);
+         }
+         OkHttpClient client = RequestClientFactory.getHttpClient();
+         Request.Builder requestBuilder = null;
+         if(requestBody != null) {
+             requestBuilder = new Request.Builder()
+                     .url(url).delete(requestBody);
+         } else {
+             requestBuilder = new Request.Builder()
+                     .url(url).delete();
+         }
+
+         if(!headers.isEmpty()) {
+             for(Map.Entry<String, String> header : headers.entrySet()) {
+                 requestBuilder.header(header.getKey(), header.getValue());
+             }
+         }
+         Request request = requestBuilder.build();
+         try {
+             client.newCall(request).execute();
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+     }
+
+}

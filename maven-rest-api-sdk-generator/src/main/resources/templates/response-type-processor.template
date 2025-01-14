@@ -1,0 +1,10 @@
+package <PackageName>;
+
+import java.util.List;
+
+public interface ResponseTypeProcessor {
+    boolean supports(String mediaType);
+    <T> T convert(String data, Class<T> type);
+    <T> List<T> convertFromList(String data, Class<T> type);
+}
+

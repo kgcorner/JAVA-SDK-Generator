@@ -1,0 +1,3 @@
+        public <ReturnType> <MethodName>(<Params>) {
+        <MethodBody>
+        }

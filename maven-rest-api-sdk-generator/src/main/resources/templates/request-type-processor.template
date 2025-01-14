@@ -1,0 +1,6 @@
+package <PackageName>;
+
+public interface RequestTypeProcessor {
+    boolean supports(String mediaType);
+    String convert(Object data);
+}
